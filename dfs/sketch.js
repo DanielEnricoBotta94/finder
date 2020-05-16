@@ -3,7 +3,6 @@ let cells = [];
 let current;
 let cols, rows;
 let stack = [];
-let drawn = false;
 
 
 function setup() {
@@ -27,12 +26,7 @@ function draw() {
     for (let c of cells) {
         c.show()
     }
-    if (!drawn) {
-        drawMaze()
-    }
-    else{
-        current.a();
-    }
+    drawMaze()
 }
 
 function drawMaze() {
@@ -56,31 +50,7 @@ function drawMaze() {
     }
     else {
         current = cells[0];
-        current.highlight();
-        drawn = true;
     }
-}
-
-function keyPressed() {
-    if(!drawn)
-        return;
-    let m;
-    switch (keyCode) {
-        case DOWN_ARROW:
-            m = cells[index(current.i, current.j + 1)];
-            break;
-        case UP_ARROW:
-            m = cells[index(current.i, current.j - 1)];
-            break;
-        case RIGHT_ARROW:
-            m = cells[index(current.i + 1, current.j)];
-            break;
-        case LEFT_ARROW:
-            m = cells[index(current.i - 1, current.j)];
-            break;
-    }
-    current = m && m !== -1 ? m : current;
-    current.highlight()    
 }
 
 function index(i, j) {
