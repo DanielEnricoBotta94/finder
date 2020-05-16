@@ -55,11 +55,4 @@ function Cell(i, j) {
         let chosen = floor(random(0, neighbours.length));
         return neighbours[chosen];
     }
-
-    this.a = function() {
-        push()
-        createCanvas(300, 300)
-        background(33)
-        pop()
-    }
 }
